@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Yash Vihar RWA Directory</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+
+background:#f5f7fb;
+color:#1f2937;
+
+}
+
+.container{
+
+max-width:1450px;
+margin:auto;
+padding:30px;
+
+}
+
+.card{
+
+background:white;
+border-radius:24px;
+border:1px solid #e5e7eb;
+box-shadow:0 8px 30px rgba(0,0,0,.05);
+overflow:hidden;
+
+}
+
+.header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:28px 34px;
+border-bottom:1px solid #ececec;
+flex-wrap:wrap;
+gap:20px;
+
+}
+
+.logo-area h1{
+
+font-size:30px;
+font-weight:800;
+color:#111827;
+
+}
+
+.logo-area p{
+
+margin-top:6px;
+font-size:14px;
+color:#6b7280;
+
+}
+
+.right-area{
+
+display:flex;
+gap:15px;
+align-items:center;
+flex-wrap:wrap;
+
+}
+
+.pdf-btn{
+
+display:flex;
+align-items:center;
+gap:12px;
+padding:14px 18px;
+background:#f8fafc;
+border:1px solid #dbe3ea;
+border-radius:16px;
+text-decoration:none;
+transition:.25s;
+
+}
+
+.pdf-btn:hover{
+
+background:#eef4ff;
+
+}
+
+.pdf-icon{
+
+font-size:28px;
+
+}
+
+.pdf-text{
+
+display:flex;
+flex-direction:column;
+
+}
+
+.pdf-title{
+
+font-size:14px;
+font-weight:700;
+color:#111827;
+
+}
+
+.pdf-sub{
+
+font-size:12px;
+color:#6b7280;
+
+}
+
+.site-tag{
+
+padding:12px 18px;
+border-radius:14px;
+background:#f3f4f6;
+font-size:13px;
+font-weight:600;
+color:#6b7280;
+
+}
+
+.toolbar{
+
+display:grid;
+grid-template-columns:2fr 220px 220px;
+gap:20px;
+padding:25px 34px;
+background:#fafafa;
+border-bottom:1px solid #ececec;
+
+}
+
+.search{
+
+position:relative;
+
+}
+
+.search svg{
+
+position:absolute;
+left:15px;
+top:14px;
+width:18px;
+height:18px;
+color:#9ca3af;
+
+}
+
+.search input{
+
+width:100%;
+padding:14px 16px 14px 46px;
+border-radius:14px;
+border:1px solid #d1d5db;
+outline:none;
+font-size:14px;
+transition:.3s;
+
+}
+
+.search input:focus{
+
+border-color:#2563eb;
+
+}
+
+select{
+
+padding:14px;
+border-radius:14px;
+border:1px solid #d1d5db;
+background:white;
+font-size:14px;
+outline:none;
+cursor:pointer;
+
+}
+
+.stats{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 34px;
+background:white;
+border-bottom:1px solid #ececec;
+
+}
+
+.total{
+
+font-weight:700;
+font-size:14px;
+color:#374151;
+
+}
+
+.badge{
+
+background:#ecfdf5;
+color:#047857;
+padding:8px 14px;
+border-radius:999px;
+font-size:12px;
+font-weight:700;
+
+}
+
+.table-wrapper{
+
+overflow:auto;
+
+}
+
+table{
+
+width:100%;
+border-collapse:collapse;
+min-width:1100px;
+
+}
+
+thead{
+
+background:#f8fafc;
+
+}
+
+thead th{
+
+padding:18px;
+text-align:left;
+font-size:12px;
+letter-spacing:.06em;
+text-transform:uppercase;
+color:#6b7280;
+border-bottom:1px solid #ececec;
+
+}
+
+tbody td{
+
+padding:18px;
+border-bottom:1px solid #f1f5f9;
+font-size:14px;
+vertical-align:top;
+
+}
+
+tbody tr{
+
+transition:.25s;
+
+}
+
+tbody tr:hover{
+
+background:#f8fafc;
+
+}
+
+.role{
+
+display:inline-block;
+padding:7px 12px;
+border-radius:999px;
+font-size:11px;
+font-weight:700;
+background:#f3f4f6;
+
+}
+
+.defaulter{
+
+background:#dc2626 !important;
+color:white !important;
+font-weight:700;
+
+}
+
+.defaulter .role{
+
+background:white;
+color:#dc2626;
+
+}
+
+.status{
+
+display:inline-flex;
+align-items:center;
+gap:6px;
+padding:8px 14px;
+border-radius:999px;
+font-size:12px;
+font-weight:700;
+
+}
+
+.clear{
+
+background:#ecfdf5;
+color:#047857;
+
+}
+
+.due{
+
+background:white;
+color:#dc2626;
+
+}
+
+.footer{
+
+padding:20px 34px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:13px;
+color:#6b7280;
+
+}
+
+@media(max-width:900px){
+
+.toolbar{
+
+grid-template-columns:1fr;
+
+}
+
+.header{
+
+flex-direction:column;
+align-items:flex-start;
+
+}
+
+.right-area{
+
+width:100%;
+
+}
+
+.pdf-btn{
+
+width:100%;
+
+}
+
+.site-tag{
+
+width:100%;
+text-align:center;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<div class="header">
+
+<div class="logo-area">
+
+<h1>Yash Vihar Residents Welfare Association</h1>
+
+<p>Official Member Directory • Sector-5, Pataudi, Gurugram, Haryana</p>
+
+</div>
+
+<div class="right-area">
+
+<a href="Byelaws_Yash _vihar.pdf" class="pdf-btn" target="_blank">
+
+<div class="pdf-icon">📄</div>
+
+<div class="pdf-text">
+
+<div class="pdf-title">
+
+PDF - Yash Vihar RWA Bye Laws
+
+</div>
+
+<div class="pdf-sub">
+
+as per HRRS Act, 2012
+
+</div>
+
+</div>
+
+</a>
+
+<div class="site-tag">
+
+yashviharrwa.online
+
+</div>
+
+</div>
+
+</div>
+
+<div class="toolbar">
+
+<div class="search">
+
+<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+
+<path stroke-linecap="round" stroke-linejoin="round"
+d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+
+</svg>
+
+<input
+id="searchBox"
+type="text"
+placeholder="Search by Plot Number, Name or Address">
+
+</div>
+
+<select id="maintenanceFilter">
+
+<option value="all">
+
+All Residents
+
+</option>
+
+<option value="clear">
+
+Clear Dues
+
+</option>
+
+<option value="defaulter">
+
+Defaulters Only
+
+</option>
+
+</select>
+
+<select id="roleFilter">
+
+<option value="all">
+
+All Roles
+
+</option>
+
+<option>
+
+RWA President
+
+</option>
+
+<option>
+
+Secretary
+
+</option>
+
+<option>
+
+Vice-Secretary
+
+</option>
+
+<option>
+
+Treasurer
+
+</option>
+
+<option>
+
+Member
+
+</option>
+
+</select>
+
+</div>
+
+<div class="stats">
+
+<div class="total">
+
+Total Members :
+<span id="memberCount">
+
+0
+
+</span>
+
+</div>
+
+<div class="badge">
+
+LIVE DIRECTORY
+
+</div>
+
+</div>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>S.No</th>
+<th>Plot No</th>
+<th>Client Name</th>
+<th>Address</th>
+<th>Role</th>
+<th>Maintenance Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tableBody">
+
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+/* =========================================================
+   YASH VIHAR RWA DIRECTORY  -  DATA LAYER
+   Only this <script> block was rewritten.
+   HTML structure and CSS are unchanged.
+   ========================================================= */
+
+const API_URL = "https://script.google.com/macros/s/AKfycbxShyNn0nrvGgFqIjcuSQj6o6Fp87NXimhnn8kxy7H-MIwfXvcVUiYTFoXHfZXlpiH4gA/exec";
+
+/* ---- DOM references ---- */
+const tableBody         = document.getElementById("tableBody");
+const memberCount       = document.getElementById("memberCount");
+const searchBox         = document.getElementById("searchBox");
+const maintenanceFilter = document.getElementById("maintenanceFilter");
+const roleFilter        = document.getElementById("roleFilter");
+
+/* ---- master copy of all rows fetched from the sheet ---- */
+let allMembers = [];
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+
+/* safe string from any value */
+function str(v) {
+  return (v === undefined || v === null) ? "" : v.toString();
+}
+
+/* Make the page work no matter how the API names its columns.
+   We build a simplified key map (lowercase, letters+digits only)
+   and pull each field from a list of likely names. So "Plot No",
+   "plotNo", "PLOT NUMBER" all resolve to the same value. */
+function normalize(raw) {
+  const map = {};
+  Object.keys(raw).forEach(function (k) {
+    map[k.toLowerCase().replace(/[^a-z0-9]/g, "")] = raw[k];
+  });
+
+  function get(cands) {
+    for (let i = 0; i < cands.length; i++) {
+      const v = map[cands[i]];
+      if (v !== undefined && v !== null && str(v).trim() !== "") return str(v).trim();
+    }
+    return "";
+  }
+
+  return {
+    sNo:       get(["sno", "sno.", "slno", "serialno", "srno", "sl", "serial"]),
+    plotNo:    get(["plotno", "plot", "plotnumber"]),
+    name:      get(["name", "clientname", "membername"]),
+    address:   get(["address", "addr"]),
+    role:      get(["role", "designation", "post", "column1"]),
+    defaulter: get(["defaulter", "maintenancedefaulter", "maintenancestatus", "dues"])
+  };
+}
+
+/* role hierarchy:
+   President = 1, Secretary = 2, Vice-Secretary = 3,
+   Treasurer = 4, Member / blank = 5
+   - "vice" is checked BEFORE "secretary" (Vice-Secretary contains "secretary")
+   - "treasur" matches both "Treasurer" and the sheet's "Treasure" typo */
+function rolePriority(role) {
+  const r = str(role).trim().toLowerCase();
+  if (!r)                      return 5;
+  if (r.includes("president")) return 1;
+  if (r.includes("vice"))      return 3;
+  if (r.includes("secretary")) return 2;
+  if (r.includes("treasur"))   return 4;
+  return 5;
+}
+
+/* numeric part of a plot number ("A-12" -> 12); blanks go last */
+function plotNumber(plot) {
+  const digits = str(plot).replace(/[^0-9]/g, "");
+  return digits === "" ? Number.MAX_SAFE_INTEGER : parseInt(digits, 10);
+}
+
+/* defaulter only if the sheet's defaulter cell has text */
+function isDefaulter(member) {
+  return str(member.defaulter).trim() !== "";
+}
+
+/* does this member match the selected role-filter option? */
+function roleMatches(memberRole, filterValue) {
+  if (filterValue === "all") return true;
+  return rolePriority(memberRole) === rolePriority(filterValue);
+}
+
+/* sort by hierarchy first, then numeric plot number */
+function sortMembers(list) {
+  return list.slice().sort(function (a, b) {
+    const pa = rolePriority(a.role);
+    const pb = rolePriority(b.role);
+    if (pa !== pb) return pa - pb;
+    return plotNumber(a.plotNo) - plotNumber(b.plotNo);
+  });
+}
+
+/* one clean row for a single member */
+function buildRow(member) {
+  const row = document.createElement("tr");
+
+  const defaulter = isDefaulter(member);
+  if (defaulter) row.classList.add("defaulter");
+
+  const roleText = str(member.role).trim() !== "" ? member.role : "Member";
+
+  const maintenanceCell = defaulter
+    ? '<span class="status due">' + str(member.defaulter) + '</span>'
+    : '<span class="status clear">Clear</span>';
+
+  row.innerHTML =
+      '<td>' + str(member.sNo)     + '</td>'
+    + '<td>' + str(member.plotNo)  + '</td>'
+    + '<td>' + str(member.name)    + '</td>'
+    + '<td>' + str(member.address) + '</td>'
+    + '<td><span class="role">' + roleText + '</span></td>'
+    + '<td>' + maintenanceCell + '</td>';
+
+  return row;
+}
+
+/* =========================================================
+   THE ONE RENDER FUNCTION
+   ========================================================= */
+function renderTable() {
+
+  const query      = searchBox.value.trim().toLowerCase();
+  const maintValue = maintenanceFilter.value;   // all | clear | defaulter
+  const roleValue  = roleFilter.value;          // all | RWA President | ...
+
+  /* 1. filter */
+  let rows = allMembers.filter(function (m) {
+
+    if (query) {
+      const haystack = (str(m.plotNo) + " " + str(m.name) + " " + str(m.address)).toLowerCase();
+      if (haystack.indexOf(query) === -1) return false;
+    }
+
+    const def = isDefaulter(m);
+    if (maintValue === "defaulter" && !def) return false;
+    if (maintValue === "clear"     &&  def) return false;
+
+    if (!roleMatches(m.role, roleValue)) return false;
+
+    return true;
+  });
+
+  /* 2. sort */
+  rows = sortMembers(rows);
+
+  /* 3. count (reflects rows currently shown) */
+  memberCount.textContent = rows.length;
+
+  /* 4. paint */
+  tableBody.innerHTML = "";
+
+  if (rows.length === 0) {
+    const empty = document.createElement("tr");
+    empty.innerHTML =
+      '<td colspan="6" style="text-align:center;padding:30px;color:#6b7280;font-weight:600;">'
+      + 'No members found.'
+      + '</td>';
+    tableBody.appendChild(empty);
+    return;
+  }
+
+  rows.forEach(function (m) {
+    tableBody.appendChild(buildRow(m));
+  });
+}
+
+/* =========================================================
+   LOAD DATA + WIRE UP EVENTS
+   ========================================================= */
+function loadData() {
+
+  /* temporary "loading" line */
+  tableBody.innerHTML =
+    '<tr><td colspan="6" style="text-align:center;padding:30px;color:#6b7280;">Loading members…</td></tr>';
+
+  fetch(API_URL)
+    .then(function (response) { return response.json(); })
+    .then(function (data) {
+
+      /* API returned an error object instead of an array */
+      if (data && data.error) {
+        throw new Error(data.error);
+      }
+
+      const list = Array.isArray(data) ? data : [];
+      allMembers = list.map(normalize);
+      renderTable();
+    })
+    .catch(function (error) {
+      console.error("Directory load failed:", error);
+      memberCount.textContent = "0";
+      tableBody.innerHTML =
+        '<tr><td colspan="6" style="text-align:center;padding:30px;color:#dc2626;font-weight:700;">'
+        + 'Unable to load member data.'
+        + '</td></tr>';
+    });
+}
+
+/* live search + filters */
+searchBox.addEventListener("input",  renderTable);
+maintenanceFilter.addEventListener("change", renderTable);
+roleFilter.addEventListener("change", renderTable);
+
+/* go */
+loadData();
+
+</script>
+
+</body>
+</html>
