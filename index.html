@@ -748,7 +748,7 @@ function sortMembers(list) {
 }
 
 /* one clean row for a single member */
-function buildRow(member) {
+function buildRow(member, serial) {
   const row = document.createElement("tr");
 
   const defaulter = isDefaulter(member);
@@ -761,7 +761,7 @@ function buildRow(member) {
     : '<span class="status clear">Clear</span>';
 
   row.innerHTML =
-      '<td data-label="S.No">'    + str(member.sNo)     + '</td>'
+      '<td data-label="S.No">'    + serial     + '</td>'
     + '<td data-label="Plot No">' + str(member.plotNo)  + '</td>'
     + '<td data-label="Client Name">' + str(member.name)    + '</td>'
     + '<td data-label="Address">' + str(member.address) + '</td>'
@@ -816,8 +816,8 @@ function renderTable() {
     return;
   }
 
-  rows.forEach(function (m) {
-    tableBody.appendChild(buildRow(m));
+  rows.forEach(function (m, i) {
+    tableBody.appendChild(buildRow(m, i + 1));
   });
 }
 
