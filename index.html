@@ -384,6 +384,86 @@ text-align:center;
 
 }
 
+@media(max-width:768px){
+
+.container{
+padding:16px;
+}
+
+.logo-area h1{
+font-size:22px;
+}
+
+.header{
+padding:20px;
+}
+
+.toolbar{
+padding:18px 20px;
+}
+
+.stats{
+padding:16px 20px;
+}
+
+.table-wrapper{
+overflow:visible;
+}
+
+table{
+min-width:0;
+width:100%;
+}
+
+thead{
+display:none;
+}
+
+tbody,tr,td{
+display:block;
+width:100%;
+}
+
+tbody tr{
+margin-bottom:16px;
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:6px 16px;
+background:white;
+box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
+
+tbody td{
+padding:10px 0;
+border-bottom:1px dashed #eef2f7;
+font-size:14px;
+}
+
+tbody td:last-child{
+border-bottom:none;
+}
+
+tbody td::before{
+content:attr(data-label);
+display:block;
+font-size:11px;
+font-weight:700;
+letter-spacing:.04em;
+text-transform:uppercase;
+color:#6b7280;
+margin-bottom:3px;
+}
+
+.defaulter td::before{
+color:rgba(255,255,255,.85);
+}
+
+.defaulter td{
+border-bottom-color:rgba(255,255,255,.25);
+}
+
+}
+
 </style>
 
 </head>
@@ -406,7 +486,7 @@ text-align:center;
 
 <div class="right-area">
 
-<a href="Byelaws_Yash _vihar.pdf" class="pdf-btn" target="_blank">
+<a href="Byelaws_Yash _vihar.pdf" class="pdf-btn" target="_blank"">
 
 <div class="pdf-icon">📄</div>
 
@@ -681,12 +761,12 @@ function buildRow(member) {
     : '<span class="status clear">Clear</span>';
 
   row.innerHTML =
-      '<td>' + str(member.sNo)     + '</td>'
-    + '<td>' + str(member.plotNo)  + '</td>'
-    + '<td>' + str(member.name)    + '</td>'
-    + '<td>' + str(member.address) + '</td>'
-    + '<td><span class="role">' + roleText + '</span></td>'
-    + '<td>' + maintenanceCell + '</td>';
+      '<td data-label="S.No">'    + str(member.sNo)     + '</td>'
+    + '<td data-label="Plot No">' + str(member.plotNo)  + '</td>'
+    + '<td data-label="Client Name">' + str(member.name)    + '</td>'
+    + '<td data-label="Address">' + str(member.address) + '</td>'
+    + '<td data-label="Role"><span class="role">' + roleText + '</span></td>'
+    + '<td data-label="Maintenance Status">' + maintenanceCell + '</td>';
 
   return row;
 }
