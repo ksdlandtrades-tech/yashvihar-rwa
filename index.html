@@ -749,6 +749,28 @@ as per HRRS Act, 2012
 
 </a>
 
+<a href="mailto:support@yashvihar.com" class="pdf-btn">
+
+<div class="pdf-icon">✉️</div>
+
+<div class="pdf-text">
+
+<div class="pdf-title">
+
+Contact Us
+
+</div>
+
+<div class="pdf-sub">
+
+support@yashvihar.com
+
+</div>
+
+</div>
+
+</a>
+
 </div>
 
 </div>
@@ -867,7 +889,7 @@ LIVE DIRECTORY
 <th>S.No</th>
 <th>Plot No</th>
 <th>Client Name</th>
-<th>Consent Received</th>
+<th>Membership Fees</th>
 <th>Role</th>
 <th>Maintenance Status</th>
 
@@ -981,8 +1003,8 @@ let consentFromSheet = false;
 
 /* ---- built-in fallback: plots whose owners submitted consent ---- */
 const CONSENT_PLOTS = new Set([
-  "1","2","11","17","18","19","29","42","51","52","60","65","71","72","73",
-  "78","85","86","100","111","123","125","138","144","152"
+  "1","2","11","17","18","19","29","42","51","52","60","65","66","71","72",
+  "73","78","85","86","100","111","123","125","128","138","144","152","181"
 ]);
 
 /* words in the sheet's Consent column that mean "received" */
@@ -1034,7 +1056,7 @@ function normalize(raw) {
     address:   get(["address", "addr"]),
     role:      get(["role", "designation", "post", "column1"]),
     defaulter: get(["defaulter", "maintenancedefaulter", "maintenancestatus", "dues"]),
-    consent:   get(["consent", "consentreceived", "consentstatus"])
+    consent:   get(["consent", "consentreceived", "consentstatus", "membershipfees", "membership", "fees"])
   };
 }
 
@@ -1101,7 +1123,7 @@ function buildRow(member, serial) {
       '<td data-label="S.No">'    + serial     + '</td>'
     + '<td data-label="Plot No">' + str(member.plotNo)  + '</td>'
     + '<td data-label="Client Name">' + str(member.name)    + '</td>'
-    + '<td data-label="Consent Received">' + consentCell + '</td>'
+    + '<td data-label="Membership Fees">' + consentCell + '</td>'
     + '<td data-label="Role"><span class="role">' + roleText + '</span></td>'
     + '<td data-label="Maintenance Status">' + maintenanceCell + '</td>';
 
