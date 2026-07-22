@@ -23,6 +23,10 @@ box-sizing:border-box;
 font-family:'Inter',sans-serif;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 
 background:#f5f7fb;
@@ -34,7 +38,7 @@ color:#1f2937;
 
 max-width:1450px;
 margin:auto;
-padding:30px;
+padding:84px 30px 30px;
 
 }
 
@@ -82,6 +86,49 @@ display:flex;
 gap:15px;
 align-items:center;
 flex-wrap:wrap;
+
+}
+
+.bank-fab{
+
+position:fixed;
+top:24px;
+right:24px;
+z-index:1000;
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:12px 22px;
+font-size:20px;
+font-weight:700;
+color:#fff;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+border:1px solid rgba(255,255,255,.08);
+border-radius:999px;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(15,23,42,.35);
+transition:transform .2s ease,box-shadow .2s ease;
+
+}
+
+.bank-fab:hover{
+
+transform:translateY(-2px);
+box-shadow:0 14px 30px rgba(15,23,42,.45);
+
+}
+
+.bank-fab:focus-visible{
+
+outline:3px solid #93c5fd;
+outline-offset:2px;
+
+}
+
+.bank-fab svg{
+
+width:22px;
+height:22px;
 
 }
 
@@ -337,6 +384,13 @@ color:#dc2626;
 
 }
 
+.notrec{
+
+background:#fef2f2;
+color:#dc2626;
+
+}
+
 .footer{
 
 padding:20px 34px;
@@ -382,12 +436,18 @@ text-align:center;
 
 }
 
+.bank-card{
+
+grid-template-columns:1fr;
+
+}
+
 }
 
 @media(max-width:768px){
 
 .container{
-padding:16px;
+padding:72px 16px 16px;
 }
 
 .logo-area h1{
@@ -462,6 +522,180 @@ color:rgba(255,255,255,.85);
 border-bottom-color:rgba(255,255,255,.25);
 }
 
+.bank-section{
+padding:0 16px 16px;
+}
+
+.bank-card{
+padding:24px;
+gap:24px;
+}
+
+.bank-row{
+flex-direction:column;
+gap:4px;
+}
+
+.bank-value{
+text-align:left;
+}
+
+.bank-fab{
+top:16px;
+right:16px;
+padding:10px 16px;
+font-size:15px;
+}
+
+.bank-fab svg{
+width:18px;
+height:18px;
+}
+
+}
+
+/* ===== Bank details section ===== */
+
+.bank-section{
+max-width:1450px;
+margin:24px auto 0;
+padding:0 30px 30px;
+}
+
+.bank-card{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:24px;
+box-shadow:0 8px 30px rgba(0,0,0,.05);
+padding:36px;
+display:grid;
+grid-template-columns:1.4fr 1fr;
+gap:36px;
+align-items:center;
+}
+
+.bank-left{
+min-width:0;
+}
+
+.bank-heading{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:6px;
+}
+
+.bank-heading svg{
+width:30px;
+height:30px;
+color:#0f172a;
+}
+
+.bank-heading h2{
+font-size:24px;
+font-weight:800;
+color:#111827;
+}
+
+.bank-sub{
+font-size:14px;
+color:#6b7280;
+margin-bottom:22px;
+}
+
+.bank-details{
+display:flex;
+flex-direction:column;
+gap:14px;
+margin-bottom:24px;
+}
+
+.bank-row{
+display:flex;
+justify-content:space-between;
+gap:16px;
+border-bottom:1px dashed #eef2f7;
+padding-bottom:12px;
+}
+
+.bank-row:last-child{
+border-bottom:none;
+padding-bottom:0;
+}
+
+.bank-label{
+font-size:11px;
+font-weight:700;
+letter-spacing:.05em;
+text-transform:uppercase;
+color:#6b7280;
+flex-shrink:0;
+}
+
+.bank-value{
+font-size:15px;
+font-weight:600;
+color:#111827;
+text-align:right;
+word-break:break-word;
+}
+
+.bank-actions{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:18px;
+}
+
+.copy-btn{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:10px 16px;
+border-radius:12px;
+border:1px solid #d1d5db;
+background:#f8fafc;
+font-size:13px;
+font-weight:700;
+color:#374151;
+cursor:pointer;
+transition:.2s;
+}
+
+.copy-btn:hover{
+background:#eef4ff;
+border-color:#c7d2fe;
+color:#1e293b;
+}
+
+.copy-btn.copied{
+background:#ecfdf5;
+border-color:#a7f3d0;
+color:#047857;
+}
+
+.bank-note{
+font-size:13px;
+color:#92400e;
+background:#fffbeb;
+border:1px solid #fde68a;
+border-radius:12px;
+padding:12px 14px;
+}
+
+.bank-right{
+display:flex;
+justify-content:center;
+}
+
+.bank-qr{
+max-width:100%;
+width:320px;
+height:auto;
+border-radius:18px;
+border:1px solid #e5e7eb;
+box-shadow:0 6px 20px rgba(0,0,0,.06);
+display:block;
 }
 
 </style>
@@ -469,6 +703,13 @@ border-bottom-color:rgba(255,255,255,.25);
 </head>
 
 <body>
+
+<button type="button" class="bank-fab" onclick="scrollToBank()" aria-label="Jump to bank details">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M3 21h18M4 10h16M12 3 3 8h18zM6 10v8M10 10v8M14 10v8M18 10v8"/>
+</svg>
+Bank Details
+</button>
 
 <div class="container">
 
@@ -486,7 +727,7 @@ border-bottom-color:rgba(255,255,255,.25);
 
 <div class="right-area">
 
-<a href="Byelaws_Yash _vihar.pdf" class="pdf-btn" target="_blank"">
+<a href="Byelaws_Yash%20_vihar.pdf" class="pdf-btn" target="_blank">
 
 <div class="pdf-icon">📄</div>
 
@@ -508,12 +749,6 @@ as per HRRS Act, 2012
 
 </a>
 
-<div class="site-tag">
-
-yashviharrwa.online
-
-</div>
-
 </div>
 
 </div>
@@ -532,7 +767,7 @@ d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
 <input
 id="searchBox"
 type="text"
-placeholder="Search by Plot Number, Name or Address">
+placeholder="Search by Plot Number or Name">
 
 </div>
 
@@ -632,7 +867,7 @@ LIVE DIRECTORY
 <th>S.No</th>
 <th>Plot No</th>
 <th>Client Name</th>
-<th>Address</th>
+<th>Consent Received</th>
 <th>Role</th>
 <th>Maintenance Status</th>
 
@@ -645,6 +880,77 @@ LIVE DIRECTORY
 </tbody>
 
 </table>
+
+</div>
+
+</div>
+
+<section id="bankDetails" class="bank-section">
+
+<div class="bank-card">
+
+<div class="bank-left">
+
+<div class="bank-heading">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M3 21h18M4 10h16M12 3 3 8h18zM6 10v8M10 10v8M14 10v8M18 10v8"/>
+</svg>
+<h2>Bank Details</h2>
+</div>
+
+<p class="bank-sub">For maintenance payments &amp; contributions</p>
+
+<div class="bank-details">
+
+<div class="bank-row">
+<span class="bank-label">Account Name</span>
+<span class="bank-value">Yashvi Hospitality and Management Services</span>
+</div>
+
+<div class="bank-row">
+<span class="bank-label">Account Number</span>
+<span class="bank-value">10215506746</span>
+</div>
+
+<div class="bank-row">
+<span class="bank-label">IFSC</span>
+<span class="bank-value">IDFB0021005</span>
+</div>
+
+<div class="bank-row">
+<span class="bank-label">Bank</span>
+<span class="bank-value">IDFC FIRST BANK</span>
+</div>
+
+<div class="bank-row">
+<span class="bank-label">Branch</span>
+<span class="bank-value">Sector 15 Gurgaon 122001</span>
+</div>
+
+<div class="bank-row">
+<span class="bank-label">UPI ID</span>
+<span class="bank-value">yashvihospt@idfcbank</span>
+</div>
+
+</div>
+
+<div class="bank-actions">
+<button type="button" class="copy-btn" onclick="copyText('10215506746', this)">Copy Account Number</button>
+<button type="button" class="copy-btn" onclick="copyText('IDFB0021005', this)">Copy IFSC</button>
+<button type="button" class="copy-btn" onclick="copyText('yashvihospt@idfcbank', this)">Copy UPI</button>
+</div>
+
+<p class="bank-note">Kindly mention your Plot Number while making payment.</p>
+
+</div>
+
+<div class="bank-right">
+<img src="bank-qr.jpeg" alt="Scan &amp; Pay QR — IDFC FIRST Bank, UPI ID yashvihospt@idfcbank" class="bank-qr">
+</div>
+
+</div>
+
+</section>
 
 </div>
 
@@ -667,6 +973,32 @@ const roleFilter        = document.getElementById("roleFilter");
 
 /* ---- master copy of all rows fetched from the sheet ---- */
 let allMembers = [];
+
+/* becomes true if the sheet supplies a Consent column (any non-empty value).
+   When true, consent is driven entirely by the sheet (blank = Not Received).
+   When false, we fall back to the built-in plot list below. */
+let consentFromSheet = false;
+
+/* ---- built-in fallback: plots whose owners submitted consent ---- */
+const CONSENT_PLOTS = new Set([
+  "1","2","11","17","18","19","29","42","51","52","60","65","71","72","73",
+  "78","85","86","100","111","123","125","138","144","152"
+]);
+
+/* words in the sheet's Consent column that mean "received" */
+function consentValueIsYes(value) {
+  const c = str(value).trim().toLowerCase();
+  return c === "received" || c === "yes" || c === "y" || c === "true" ||
+         c === "1" || c === "done" || c === "haan" || c === "\u2713";
+}
+
+/* consent received?  sheet column wins; otherwise the built-in list */
+function hasConsent(member) {
+  if (consentFromSheet) {
+    return consentValueIsYes(member.consent);
+  }
+  return CONSENT_PLOTS.has(str(member.plotNo).trim());
+}
 
 /* =========================================================
    HELPERS
@@ -701,7 +1033,8 @@ function normalize(raw) {
     name:      get(["name", "clientname", "membername"]),
     address:   get(["address", "addr"]),
     role:      get(["role", "designation", "post", "column1"]),
-    defaulter: get(["defaulter", "maintenancedefaulter", "maintenancestatus", "dues"])
+    defaulter: get(["defaulter", "maintenancedefaulter", "maintenancestatus", "dues"]),
+    consent:   get(["consent", "consentreceived", "consentstatus"])
   };
 }
 
@@ -760,11 +1093,15 @@ function buildRow(member, serial) {
     ? '<span class="status due">' + str(member.defaulter) + '</span>'
     : '<span class="status clear">Clear</span>';
 
+  const consentCell = hasConsent(member)
+    ? '<span class="status clear">Received</span>'
+    : '<span class="status notrec">Not Received</span>';
+
   row.innerHTML =
       '<td data-label="S.No">'    + serial     + '</td>'
     + '<td data-label="Plot No">' + str(member.plotNo)  + '</td>'
     + '<td data-label="Client Name">' + str(member.name)    + '</td>'
-    + '<td data-label="Address">' + str(member.address) + '</td>'
+    + '<td data-label="Consent Received">' + consentCell + '</td>'
     + '<td data-label="Role"><span class="role">' + roleText + '</span></td>'
     + '<td data-label="Maintenance Status">' + maintenanceCell + '</td>';
 
@@ -784,7 +1121,7 @@ function renderTable() {
   let rows = allMembers.filter(function (m) {
 
     if (query) {
-      const haystack = (str(m.plotNo) + " " + str(m.name) + " " + str(m.address)).toLowerCase();
+      const haystack = (str(m.plotNo) + " " + str(m.name)).toLowerCase();
       if (haystack.indexOf(query) === -1) return false;
     }
 
@@ -841,6 +1178,12 @@ function loadData() {
 
       const list = Array.isArray(data) ? data : [];
       allMembers = list.map(normalize);
+
+      /* if the sheet has a Consent column with any value, use it as the source */
+      consentFromSheet = allMembers.some(function (m) {
+        return str(m.consent).trim() !== "";
+      });
+
       renderTable();
     })
     .catch(function (error) {
@@ -851,6 +1194,51 @@ function loadData() {
         + 'Unable to load member data.'
         + '</td></tr>';
     });
+}
+
+/* =========================================================
+   BANK DETAILS  -  smooth scroll + copy to clipboard
+   ========================================================= */
+
+/* smooth-scroll to the bank details section (used by the floating button) */
+function scrollToBank() {
+  const el = document.getElementById("bankDetails");
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+/* copy a value and briefly confirm on the button that was clicked */
+function copyText(text, btn) {
+  function done() {
+    const original = btn.textContent;
+    btn.classList.add("copied");
+    btn.textContent = "Copied";
+    setTimeout(function () {
+      btn.classList.remove("copied");
+      btn.textContent = original;
+    }, 1500);
+  }
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(function () {
+      fallbackCopy(text);
+      done();
+    });
+  } else {
+    fallbackCopy(text);
+    done();
+  }
+}
+
+/* clipboard fallback for older / non-secure browsers */
+function fallbackCopy(text) {
+  const t = document.createElement("textarea");
+  t.value = text;
+  t.style.position = "fixed";
+  t.style.opacity = "0";
+  document.body.appendChild(t);
+  t.select();
+  try { document.execCommand("copy"); } catch (e) {}
+  document.body.removeChild(t);
 }
 
 /* live search + filters */
