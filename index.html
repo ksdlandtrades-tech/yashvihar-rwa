@@ -574,6 +574,10 @@ gap:36px;
 align-items:center;
 }
 
+.bank-card.solo{
+grid-template-columns:1fr;
+}
+
 .bank-left{
 min-width:0;
 }
@@ -749,7 +753,7 @@ as per HRRS Act, 2012
 
 </a>
 
-<a href="mailto:yashviharrwa@gmail.com" class="pdf-btn">
+<a href="mailto:support@yashvihar.com" class="pdf-btn">
 
 <div class="pdf-icon">✉️</div>
 
@@ -763,7 +767,7 @@ Contact Us
 
 <div class="pdf-sub">
 
-yashviharrwa@gmail.com
+support@yashvihar.com
 
 </div>
 
@@ -861,7 +865,7 @@ Member
 
 <div class="total">
 
-Total Plots Members :
+Total Plot Members :
 <span id="memberCount">
 
 0
@@ -920,7 +924,7 @@ LIVE DIRECTORY
 <h2>Bank Details</h2>
 </div>
 
-<p class="bank-sub">For maintenance payments &amp; contributions</p>
+<p class="bank-sub">For maintenance payments</p>
 
 <div class="bank-details">
 
@@ -968,6 +972,51 @@ LIVE DIRECTORY
 
 <div class="bank-right">
 <img src="bank-qr.jpeg" alt="Scan &amp; Pay QR — IDFC FIRST Bank, UPI ID yashvihospt@idfcbank" class="bank-qr">
+</div>
+
+</div>
+
+</section>
+
+<section class="bank-section">
+
+<div class="bank-card solo">
+
+<div class="bank-left">
+
+<div class="bank-heading">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M3 21h18M4 10h16M12 3 3 8h18zM6 10v8M10 10v8M14 10v8M18 10v8"/>
+</svg>
+<h2>RWA Membership Fees</h2>
+</div>
+
+<p class="bank-sub">Membership Fee Payment Details</p>
+
+<div class="bank-details">
+
+<div class="bank-row">
+<span class="bank-label">Account Name</span>
+<span class="bank-value">Yash Vihar Resident Welfare Association</span>
+</div>
+
+<div class="bank-row">
+<span class="bank-label">Account Number</span>
+<span class="bank-value">2602252313736950</span>
+</div>
+
+<div class="bank-row">
+<span class="bank-label">IFSC Code</span>
+<span class="bank-value">AUBL0002523</span>
+</div>
+
+</div>
+
+<div class="bank-actions">
+<button type="button" class="copy-btn" onclick="copyText('2602252313736950', this)">Copy Account Number</button>
+<button type="button" class="copy-btn" onclick="copyText('AUBL0002523', this)">Copy IFSC</button>
+</div>
+
 </div>
 
 </div>
@@ -1111,6 +1160,10 @@ function buildRow(member, serial) {
 
   const roleText = str(member.role).trim() !== "" ? member.role : "Member";
 
+  /* business rule: if fees are not received, display the role as "Not-Member"
+     (display only — the original role from the sheet is never changed) */
+  const displayRole = hasConsent(member) ? roleText : "Not-Member";
+
   const maintenanceCell = defaulter
     ? '<span class="status due">' + str(member.defaulter) + '</span>'
     : '<span class="status clear">Clear</span>';
@@ -1124,7 +1177,7 @@ function buildRow(member, serial) {
     + '<td data-label="Plot No">' + str(member.plotNo)  + '</td>'
     + '<td data-label="Client Name">' + str(member.name)    + '</td>'
     + '<td data-label="Membership Fees">' + consentCell + '</td>'
-    + '<td data-label="Role"><span class="role">' + roleText + '</span></td>'
+    + '<td data-label="Role"><span class="role">' + displayRole + '</span></td>'
     + '<td data-label="Maintenance Status">' + maintenanceCell + '</td>';
 
   return row;
