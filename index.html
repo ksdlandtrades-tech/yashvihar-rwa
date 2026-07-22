@@ -753,7 +753,7 @@ as per HRRS Act, 2012
 
 </a>
 
-<a href="mailto:yashviharraw@gmail.com" class="pdf-btn">
+<a href="mailto:yashviharrwa@gmail.com" class="pdf-btn">
 
 <div class="pdf-icon">✉️</div>
 
@@ -767,7 +767,7 @@ Contact Us
 
 <div class="pdf-sub">
 
-yashviharraw@gmail.com
+yashviharrwa@gmail.com
 
 </div>
 
@@ -819,41 +819,23 @@ Defaulters Only
 
 </select>
 
-<select id="roleFilter">
+<select id="feesFilter">
 
 <option value="all">
 
-All Roles
+All Membership Fees
 
 </option>
 
-<option>
+<option value="received">
 
-RWA President
-
-</option>
-
-<option>
-
-Secretary
+Received
 
 </option>
 
-<option>
+<option value="notreceived">
 
-Vice-Secretary
-
-</option>
-
-<option>
-
-Treasurer
-
-</option>
-
-<option>
-
-Member
+Not Received
 
 </option>
 
@@ -865,7 +847,7 @@ Member
 
 <div class="total">
 
-Total Plot Members :
+Total Members :
 <span id="memberCount">
 
 0
@@ -1040,7 +1022,7 @@ const tableBody         = document.getElementById("tableBody");
 const memberCount       = document.getElementById("memberCount");
 const searchBox         = document.getElementById("searchBox");
 const maintenanceFilter = document.getElementById("maintenanceFilter");
-const roleFilter        = document.getElementById("roleFilter");
+const feesFilter        = document.getElementById("feesFilter");
 
 /* ---- master copy of all rows fetched from the sheet ---- */
 let allMembers = [];
@@ -1135,12 +1117,6 @@ function isDefaulter(member) {
   return str(member.defaulter).trim() !== "";
 }
 
-/* does this member match the selected role-filter option? */
-function roleMatches(memberRole, filterValue) {
-  if (filterValue === "all") return true;
-  return rolePriority(memberRole) === rolePriority(filterValue);
-}
-
 /* sort by hierarchy first, then numeric plot number */
 function sortMembers(list) {
   return list.slice().sort(function (a, b) {
@@ -1190,7 +1166,7 @@ function renderTable() {
 
   const query      = searchBox.value.trim().toLowerCase();
   const maintValue = maintenanceFilter.value;   // all | clear | defaulter
-  const roleValue  = roleFilter.value;          // all | RWA President | ...
+  const feesValue  = feesFilter.value;          // all | received | notreceived
 
   /* 1. filter */
   let rows = allMembers.filter(function (m) {
@@ -1204,7 +1180,9 @@ function renderTable() {
     if (maintValue === "defaulter" && !def) return false;
     if (maintValue === "clear"     &&  def) return false;
 
-    if (!roleMatches(m.role, roleValue)) return false;
+    const paid = hasConsent(m);
+    if (feesValue === "received"    && !paid) return false;
+    if (feesValue === "notreceived" &&  paid) return false;
 
     return true;
   });
@@ -1319,7 +1297,7 @@ function fallbackCopy(text) {
 /* live search + filters */
 searchBox.addEventListener("input",  renderTable);
 maintenanceFilter.addEventListener("change", renderTable);
-roleFilter.addEventListener("change", renderTable);
+feesFilter.addEventListener("change", renderTable);
 
 /* go */
 loadData();
