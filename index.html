@@ -601,6 +601,22 @@ font-weight:800;
 color:#111827;
 }
 
+.bank-cardhead{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.bank-logo{
+height:42px;
+width:auto;
+max-width:160px;
+object-fit:contain;
+display:block;
+}
+
 .bank-sub{
 font-size:14px;
 color:#6b7280;
@@ -823,7 +839,7 @@ Defaulters Only
 
 <option value="all">
 
-Membership Fees
+All Membership Fees
 
 </option>
 
@@ -966,11 +982,17 @@ LIVE DIRECTORY
 
 <div class="bank-left">
 
+<div class="bank-cardhead">
+
 <div class="bank-heading">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 <path d="M3 21h18M4 10h16M12 3 3 8h18zM6 10v8M10 10v8M14 10v8M18 10v8"/>
 </svg>
 <h2>RWA Membership Fees</h2>
+</div>
+
+<img src="au-logo.png" alt="AU Small Finance Bank" class="bank-logo" onerror="this.style.display='none'">
+
 </div>
 
 <p class="bank-sub">Membership Fee Payment Details</p>
@@ -990,6 +1012,11 @@ LIVE DIRECTORY
 <div class="bank-row">
 <span class="bank-label">IFSC Code</span>
 <span class="bank-value">AUBL0002523</span>
+</div>
+
+<div class="bank-row">
+<span class="bank-label">Bank</span>
+<span class="bank-value">AU Small Finance Bank</span>
 </div>
 
 </div>
